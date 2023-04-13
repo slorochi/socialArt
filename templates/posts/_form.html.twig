@@ -1,4 +1,16 @@
 {{ form_start(form) }}
+    <div class="flex justify-center items-center flex-col">
     {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+     <div class="text-red-500 flex  flex-col font-semibold ">
+        {{ form_errors(form) }}
+    </div>
+
+    <div class="flex flex-row">
+        <div class="flex flex-col">
+        </div>
+        <div class="flex flex-col" id="some-custom-id">
+        </div>
+    </div>
+    <button class="bg-emerald-50/75 py-1.5 px-4 rounded-lg font-semibold hover:bg-emerald-50/[0.85]">{{ button_label|default('Publier') }}</button>
+    </div>
 {{ form_end(form) }}

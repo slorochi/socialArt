@@ -3,22 +3,25 @@
 {% block title %}Posts index{% endblock %}
 
 {% block body %}
-    <h1>Posts index</h1>
+    <div class="bg-[#e8e6e2] min-h-screen flex flex-col items-center ">
+    <h1 class="font-semibold text-4xl mb-8">Social Art</h1>
+    <div class="flex justify-center flex-col w-11/12">
+        <div class="flex justify-between w-full mb-4">
+            <div>left content</div>
+            <div>right content</div>
+        </div>
+    {# container posts #}
+    <div class="rounded-xl w-full bg-[#BCBCBC] py-10 px-7 flex">
+    <div class="bg-[#D4D4D4] rounded-lg h-52 w-[216px]">
+        <div class="items-center h-10 flex flex-row relative left-[-10px] top-[-19px]">
+            <div class="losange rotate-45 h-12 w-12 bg-[#E2E2E2] shadow-[1px_-1px_6px_-1px_rgba(0,0,0,0.3)] z-20 rounded-md"></div>
+            <div class="text-sm text-slate-500 relative left-[-10px] bg-[#E2E2E2] h-[20px] w-40 rounded-sm shadow flex justify-center items-center"> username</div>
+        </div>
+    </div>
+    
+    {% for post in posts %}
 
-    <table class="table">
-        <thead>
             <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Likes</th>
-                <th>Type</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for post in posts %}
-            <tr>
-                <td>{{ post.id }}</td>
                 <td>{{ post.title }}</td>
                 <td>{{ post.likes }}</td>
                 <td>{{ post.type }}</td>
@@ -31,9 +34,10 @@
             <tr>
                 <td colspan="5">no records found</td>
             </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        {% endfor %}</div>
+    </div>
+    
 
     <a href="{{ path('app_posts_new') }}">Create new</a>
+    </div>
 {% endblock %}

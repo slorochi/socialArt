@@ -12,16 +12,16 @@
         </div>
     {# container posts #}
     <div class="rounded-xl w-full bg-[#BCBCBC] py-10 px-7 flex">
-    <div class="bg-[#D4D4D4] rounded-lg h-52 w-[216px]">
-        <div class="items-center h-10 flex flex-row relative left-[-10px] top-[-19px]">
-            <div class="losange rotate-45 h-12 w-12 bg-[#E2E2E2] shadow-[1px_-1px_6px_-1px_rgba(0,0,0,0.3)] z-20 rounded-md"></div>
-            <div class="text-sm text-slate-500 relative left-[-10px] bg-[#E2E2E2] h-[20px] w-40 rounded-sm shadow flex justify-center items-center"> username</div>
-        </div>
-    </div>
+    
     
     {% for post in posts %}
-
-            <tr>
+            <div class="bg-[#D4D4D4] rounded-lg h-52 w-[216px]">
+        <div class="items-center h-10 flex flex-row relative left-[-10px] top-[-19px]">
+            <div class="losange rotate-45 h-12 w-12 bg-[#E2E2E2] shadow-[1px_-1px_6px_-1px_rgba(0,0,0,0.3)] z-20 rounded-md"></div>
+            <div class="text-sm text-slate-500 relative left-[-10px] bg-[#E2E2E2] h-[20px] w-40 rounded-sm shadow flex justify-center items-center"> {{(post|json_encode )}}</div>
+        </div>
+    </div>
+            {# <tr>
                 <td>{{ post.title }}</td>
                 <td>{{ post.likes }}</td>
                 <td>{{ post.type }}</td>
@@ -29,7 +29,7 @@
                     <a href="{{ path('app_posts_show', {'id': post.id}) }}">show</a>
                     <a href="{{ path('app_posts_edit', {'id': post.id}) }}">edit</a>
                 </td>
-            </tr>
+            </tr> #}
         {% else %}
             <tr>
                 <td colspan="5">no records found</td>

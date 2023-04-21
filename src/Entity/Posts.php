@@ -24,15 +24,16 @@ class Posts
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $type = null;
 
-    #[ORM\ManyToOne(inversedBy: 'posts')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?User $user_id = null;
 
     #[ORM\OneToMany(mappedBy: 'post_id', targetEntity: Comments::class)]
     private Collection $comments;
 
     #[ORM\OneToMany(mappedBy: 'post_id', targetEntity: Files::class)]
     private Collection $files;
+
+    #[ORM\ManyToOne(inversedBy: 'posts')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $user = null;
 
     public function __construct()
     {
@@ -77,18 +78,6 @@ class Posts
     public function setType(?string $type): self
     {
         $this->type = $type;
-
-        return $this;
-    }
-
-    public function getUserId(): ?User
-    {
-        return $this->user_id;
-    }
-
-    public function setUserId(?User $user_id): self
-    {
-        $this->user_id = $user_id;
 
         return $this;
     }
@@ -150,6 +139,18 @@ class Posts
             }
         }
 
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+        echo($user);
         return $this;
     }
 }

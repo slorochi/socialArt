@@ -16,6 +16,7 @@ class PostsController extends AbstractController
     #[Route('/', name: 'app_posts_index', methods: ['GET'])]
     public function index(PostsRepository $postsRepository): Response
     {
+        /* dd($this->getUser());*/
         return $this->render('posts/index.html.twig', [
             'posts' => $postsRepository->findAll(),
         ]);
@@ -30,7 +31,8 @@ class PostsController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             
-            $post->setUserId($this->getUser());
+            $post->setUser($this->getUser());
+            dd($this->getUser());
             $postsRepository->save($post, true);
 
             return $this->redirectToRoute('app_posts_index', [], Response::HTTP_SEE_OTHER);
